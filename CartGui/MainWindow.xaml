@@ -1,0 +1,338 @@
+﻿<Window x:Class="CartGui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CartGui.Convertor"
+        xmlns:m="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Height="800" 
+        Width="1200"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True">
+
+    <Window.Resources>
+        <local:StringNullOrEmpty x:Key="hideText"/>
+    </Window.Resources>
+
+
+    <Border Background="#222725">
+
+        <Grid>
+            <Border Style="{StaticResource circle1}"/>
+            <Border Style="{StaticResource circle2}"/>
+            <Border Style="{StaticResource circle3}"/>
+
+            <Border Style="{StaticResource contentBackground}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="400"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="1">
+                        
+                        <!--Logo Text-->
+                        <StackPanel Orientation="Vertical"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <TextBlock Text="NOTHING"
+                                       Style="{StaticResource logoText1}"/>
+                            <TextBlock Text="Pure Instinct"
+                                       Style="{StaticResource logoText2}"/>
+                        </StackPanel>
+                        
+                        <!--Nav bar links-->
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Margin="250 0 0 0">
+                            <Grid>
+                                <TextBlock Text="Search Product"
+                                           Style="{StaticResource searchTbl}"
+                                           Visibility="{Binding Text, ElementName=searchBox, Converter={StaticResource hideText}}"/>
+                                <TextBox x:Name="searchBox"
+                                         Style="{StaticResource searchTextBox}"/>
+                            </Grid>
+                            <Border Style="{StaticResource iconHover}">
+                                <m:PackIcon Kind="user" Style="{StaticResource navItemIcons}"/>
+                            </Border>
+                            <Border Style="{StaticResource iconHover}">
+                                <m:PackIcon Kind="Cart" Style="{StaticResource navItemIcons}"/>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="330"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="290"/>
+                            <ColumnDefinition Width="25"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ScrollViewer Grid.Column="1"
+                                      VerticalScrollBarVisibility="Hidden">
+                            <StackPanel Orientation="Vertical"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+
+                                <Border Style="{StaticResource ImageBorderStyle}"
+                                        Tag="/Images/earphone1.png"
+                                        MouseDown="Border_MouseDown">
+                                    <Image Source="/Images/earphone1.png"/>
+                                </Border>
+
+                                <Border Style="{StaticResource ImageBorderStyle}"
+                                        Tag="/Images/earphone2.png"
+                                        MouseDown="Border_MouseDown">
+                                    <Image Source="/Images/earphone2.png"/>
+                                </Border>
+
+                                <Border Style="{StaticResource ImageBorderStyle}"
+                                        Tag="/Images/earphone5.png"
+                                        MouseDown="Border_MouseDown">
+                                    <Image Source="/Images/earphone5.png"/>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                        
+                        <!--Large image dsiplay-->
+                        <Border Grid.Column="2"
+                                Margin="10"
+                                BorderBrush="{StaticResource transparentColor}">
+                            <Image x:Name="largeImageDisplay"
+                                   Source="/Images/earphone1.png"
+                                   Stretch="Uniform"
+                                   Width="250"
+                                   Height="250">
+                                <Image.Effect>
+                                    <DropShadowEffect BlurRadius="50"
+                                                      ShadowDepth="40"
+                                                      Direction="270"/>
+                                </Image.Effect>
+                            </Image>
+                        </Border>
+                        
+                        
+                        <!--Payments-->
+                        <Grid Grid.Column="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="65"/>
+                                <RowDefinition Height="65"/>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="220"/>
+                                    <ColumnDefinition Width="70"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Checkout"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontFamily="{StaticResource libRegular}"
+                                           Foreground="{StaticResource secondaryColor}"/>
+                                <TextBlock Text="290₹"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Grid.Column="1"
+                                           FontSize="20"
+                                           FontFamily="{StaticResource libRegular}"
+                                           Foreground="{StaticResource primaryColor}"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <TextBlock Text="cardholder Name"
+                                           Style="{StaticResource cardDetailstbl}"
+                                           Visibility="{Binding Text, ElementName=cardholderName, Converter={StaticResource hideText}}"/>
+                                <TextBox x:Name="cardholderName"
+                                         Style="{StaticResource chnTextBox}"/>
+                            </Grid>
+
+                            <Grid Grid.Row="2">
+                                <TextBlock Text="Card Number"
+                                           Style="{StaticResource cardDetailstbl}"
+                                           Visibility="{Binding Text, ElementName=cardNumber, Converter={StaticResource hideText}}"/>
+                                <TextBox x:Name="cardNumber"
+                                         Style="{StaticResource chnTextBox}"/>
+                            </Grid>
+                            
+                            <Grid Grid.Row="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="Explnation"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               FontSize="20"
+                                               FontFamily="{StaticResource libRegular}"
+                                               Foreground="{StaticResource secondaryColor}"
+                                               Opacity="0.5"/>
+                                    <TextBlock Text="CVV"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontSize="20"
+                                               FontFamily="{StaticResource libRegular}"
+                                               Foreground="{StaticResource secondaryColor}"
+                                               Opacity="0.5"
+                                               Grid.Column="1"
+                                               Margin="110 0 0 0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Row="1">
+                                    <Grid>
+                                        <TextBlock Text="MM"
+                                                   Style="{StaticResource cardDetailstbl}"
+                                                   Visibility="{Binding Text, ElementName=month, Converter={StaticResource hideText}}"/>
+                                        <TextBox x:Name="month"
+                                         Style="{StaticResource mmTextBox}"/>
+                                    </Grid>
+                                    <TextBlock Text="/"
+                                               FontSize="30"
+                                               Foreground="{StaticResource secondaryColor}"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Opacity="0.5"
+                                               Margin="10 0 0 5"/>
+                                    <Grid Margin="10 0 0 0">
+                                        <TextBlock Text="YY"
+                                                   Style="{StaticResource cardDetailstbl}"
+                                                   Visibility="{Binding Text, ElementName=year, Converter={StaticResource hideText}}"/>
+                                        <TextBox x:Name="year"
+                                         Style="{StaticResource yyTextBox}"/>
+                                    </Grid>
+
+                                    <TextBox Margin="10 0 0 0"
+                                             x:Name="CVV"
+                                             Style="{StaticResource cvvTextBox}"/>
+
+
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Grid.Row="4" Margin="0 20 0 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="220"/>
+                                    <ColumnDefinition Width="70"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="balance amount"
+                                           Style="{StaticResource Tbl1}"/>
+
+                                <TextBlock Text="200₹"
+                                           Grid.Column="1"
+                                           Style="{StaticResource Tbl1}"/>
+
+                                <TextBlock Text="vat (21%)"
+                                           Grid.Column="0"
+                                           Grid.Row="1"
+                                           Margin="0 5 0 0"
+                                           Style="{StaticResource Tbl1}"/>
+
+                                <TextBlock Text="90₹"
+                                           Grid.Column="1"
+                                           Grid.Row="1"
+                                           Margin="0 5 0 0"
+                                           Style="{StaticResource Tbl1}"/>
+
+                            </Grid>
+
+                            <StackPanel Orientation="Vertical"
+                                        Grid.Row="5">
+                                <Separator Foreground="{StaticResource secondaryColor}"
+                                           Opacity="0.5"
+                                           Height="10"
+                                           Margin="0 15 0 0"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="220"/>
+                                        <ColumnDefinition Width="70"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Total:"
+                                           Grid.Column="0"
+                                           Grid.Row="1"
+                                           Margin="0 5 0 0"
+                                           Style="{StaticResource Tbl1}"/>
+                                    <TextBlock Text="290₹"
+                                           Grid.Column="1"
+                                           Grid.Row="1"
+                                           Margin="0 5 0 0"
+                                           Style="{StaticResource Tbl1}"/>
+                                </Grid>
+                            </StackPanel>
+
+
+                        </Grid>
+                        
+                    </Grid>
+
+                    <StackPanel Grid.Row="3"
+                                Orientation="Vertical">
+                        <Button Style="{StaticResource buyButton}"
+                                Content="Buy"/>
+
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Bottom">
+                            <TextBlock Text="@Copyright 2024 Dotnet Master"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                           Margin="40 5 0 0"
+                                       Foreground="{StaticResource secondaryColor}"></TextBlock>
+
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="250 5 0 0">
+
+                                <m:PackIcon Kind="Linkedin" Style="{StaticResource footerIcons}"/>
+                                <m:PackIcon Kind="Google" Style="{StaticResource footerIcons}"/>
+                                <m:PackIcon Kind="Facebook" Style="{StaticResource footerIcons}"/>
+                                <m:PackIcon Kind="Instagram" Style="{StaticResource footerIcons}"/>
+                                <m:PackIcon Kind="Youtube" Style="{StaticResource footerIcons}"/>
+                                <m:PackIcon Kind="Skype" Style="{StaticResource footerIcons}"/>
+
+                            </StackPanel>
+                            
+                            
+                        </StackPanel>
+                        
+                    </StackPanel>
+                    
+                    
+                </Grid>
+            </Border>
+            
+            
+        </Grid>
+        
+        
+        
+        
+    </Border>
+    
+    
+    
+</Window>
