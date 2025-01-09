@@ -1,0 +1,9 @@
+﻿<Application x:Class="NeonClock.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NeonClock"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <FontFamily x:Key="digitalFont">pack://application:,,,/Fonts/ds_digital/#DS-Digital</FontFamily>
+    </Application.Resources>
+</Application>

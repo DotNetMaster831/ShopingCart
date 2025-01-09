@@ -1,0 +1,161 @@
+﻿<Window x:Class="NeonClock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NeonClock"
+        mc:Ignorable="d"
+        Height="400" 
+        Width="800"
+        Background="Black"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/b2.jpg" Stretch="Fill"/>
+        </Grid.Background>
+        
+        <!--Border with Neon Glow-->
+        <Border CornerRadius="10"
+                BorderThickness="5"
+                Padding="10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF00FF" Offset="0.0"/>
+                    <GradientStop Color="#FF00FF" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <SolidColorBrush Color="Black"/>
+            </Border.Background>
+            <Border.Effect>
+                <DropShadowEffect Color="#FF00FF" BlurRadius="30"
+                                  ShadowDepth="0"
+                                  Opacity="0.8"/>
+            </Border.Effect>
+            
+            
+            <!--Time Display-->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <!--Hours-->
+                <TextBlock Name="HoursText"
+                           FontSize="48"
+                           FontFamily="{StaticResource digitalFont}"
+                           FontWeight="Bold"
+                           RenderTransformOrigin="0.5,0.5"
+                           Text="00"
+                           VerticalAlignment="Center">
+                    <TextBlock.RenderTransform>
+                        <ScaleTransform ScaleY="1"/>
+                    </TextBlock.RenderTransform>
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF00FF" Offset="0.0"/>
+                            <GradientStop Color="#FF00FF" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+
+                <TextBlock FontSize="48"
+                           FontFamily="{StaticResource digitalFont}"
+                           FontWeight="Bold"
+                           RenderTransformOrigin="0.5,0.5"
+                           Text=":"
+                           VerticalAlignment="Center">
+                    <TextBlock.RenderTransform>
+                        <ScaleTransform ScaleY="1"/>
+                    </TextBlock.RenderTransform>
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF00FF" Offset="0.0"/>
+                            <GradientStop Color="#FF00FF" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                
+                <!--minutes-->
+                <TextBlock Name="MinutesText"
+                           FontSize="48"
+                           FontFamily="{StaticResource digitalFont}"
+                           FontWeight="Bold"
+                           RenderTransformOrigin="0.5,0.5"
+                           Text="00"
+                           VerticalAlignment="Center">
+                    <TextBlock.RenderTransform>
+                        <ScaleTransform ScaleY="1"/>
+                    </TextBlock.RenderTransform>
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF00FF" Offset="0.0"/>
+                            <GradientStop Color="#FF00FF" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+
+                <TextBlock FontSize="48"
+                           FontFamily="{StaticResource digitalFont}"
+                           FontWeight="Bold"
+                           RenderTransformOrigin="0.5,0.5"
+                           Text=":"
+                           VerticalAlignment="Center">
+                    <TextBlock.RenderTransform>
+                        <ScaleTransform ScaleY="1"/>
+                    </TextBlock.RenderTransform>
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF00FF" Offset="0.0"/>
+                            <GradientStop Color="#FF00FF" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+
+                <!--seconds-->
+                <TextBlock Name="SecondsText"
+                           FontSize="48"
+                           FontFamily="{StaticResource digitalFont}"
+                           FontWeight="Bold"
+                           RenderTransformOrigin="0.5,0.5"
+                           Text="00"
+                           VerticalAlignment="Center">
+                    <TextBlock.RenderTransform>
+                        <ScaleTransform ScaleY="1"/>
+                    </TextBlock.RenderTransform>
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF00FF" Offset="0.0"/>
+                            <GradientStop Color="#FF00FF" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+
+                <!--AM/PM-->
+                <TextBlock Name="MerdianText"
+                           FontSize="48"
+                           FontFamily="{StaticResource digitalFont}"
+                           FontWeight="Bold"
+                           RenderTransformOrigin="0.5,0.5"
+                           Text="AM"
+                           VerticalAlignment="Center"
+                           Margin="10 0 0 0">
+                    <TextBlock.RenderTransform>
+                        <ScaleTransform ScaleY="1"/>
+                    </TextBlock.RenderTransform>
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF00FF" Offset="0.0"/>
+                            <GradientStop Color="#FF00FF" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+
+            </StackPanel>
+            
+        </Border>
+        
+    </Grid>
+</Window>
